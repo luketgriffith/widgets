@@ -33,6 +33,9 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.engine('ejs', ejs_mate);
 app.set('view engine', 'ejs');
 
+app.get('/', function(req, res, next) {
+  res.send('Hello World');
+});
 
 app.get('/widgets', function(req, res, next) {
   Widget.find({}, function(err, widgets) {
