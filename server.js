@@ -11,6 +11,8 @@ var User = require('./models/users');
 
 var app = express();
 
+app.set('port', (process.env.PORT || 5000));
+
 mongoose.connect(secret.database, function(err){
   if (err) {
     console.log(err);
@@ -105,7 +107,7 @@ app.get('/users/:id', function(req, res, next) {
 });
 
 
-app.listen(secret.port, function(err){
+app.listen(app.get('port'), function(err){
   if(err) throw err;
   console.log('Server Running ok')
 });
